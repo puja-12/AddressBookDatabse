@@ -27,3 +27,8 @@ insert into Addressbook values
 update  Addressbook
 set Lastname = 'Mishra'
 where Firstname= 'Shivm';
+
+
+......Delete contact using firstname.....
+delete from Addressbook
+where Firstname='Shivm';
