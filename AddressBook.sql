@@ -27,4 +27,3 @@ insert into Addressbook values
 update  Addressbook
 set Lastname = 'Mishra'
 where Firstname= 'Shivm';
-select* from Addressbook
