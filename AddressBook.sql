@@ -21,3 +21,10 @@ insert into Addressbook values
 insert into Addressbook values
 ('Shivm','Gupta','GangaNagar','Kanpur','UP',00113,'shivmgupts@gmail.com',1234567890);
 
+
+......edit data by using firstname.....
+
+update  Addressbook
+set Lastname = 'Mishra'
+where Firstname= 'Shivm';
+select* from Addressbook
