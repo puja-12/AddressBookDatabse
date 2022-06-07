@@ -22,6 +22,7 @@ insert into Addressbook values
 ('Shivm','Gupta','GangaNagar','Kanpur','UP',00113,'shivmgupts@gmail.com',1234567890);
 
 
+
 ......edit data by using firstname.....
 
 update  Addressbook
@@ -32,3 +33,9 @@ where Firstname= 'Shivm';
 ......Delete contact using firstname.....
 delete from Addressbook
 where Firstname='Shivm';
+
+......Retrieve data by using city or state name.....
+
+select* from Addressbook
+where City= 'Delhi' or State='New Delhi';
+
