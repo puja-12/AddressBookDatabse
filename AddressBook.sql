@@ -43,3 +43,9 @@ where City= 'Delhi' or State='New Delhi';
 
 select count(City) from Addressbook
 select count(State) from Addressbook
+
+.......retrieve entries sorted alphabetically by Person’s name for a given city.......
+
+select* from Addressbook
+where city='Delhi'
+order by Firstname Asc;
