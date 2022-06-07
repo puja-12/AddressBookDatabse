@@ -49,3 +49,12 @@ select count(State) from Addressbook
 select* from Addressbook
 where city='Delhi'
 order by Firstname Asc;
+
+......Add type column......
+
+ALTER TABLE Addressbook
+Add Type varchar(20);
+update  Addressbook set Type='Family' where Firstname='Pooja';
+update  Addressbook set Type='Friend' where Firstname='Rahul';
+update  Addressbook set Type='Profession' where Firstname='Shivm';
+
