@@ -58,3 +58,6 @@ update  Addressbook set Type='Family' where Firstname='Pooja';
 update  Addressbook set Type='Friend' where Firstname='Rahul';
 update  Addressbook set Type='Profession' where Firstname='Shivm';
 
+.....count by type......
+
+select Count(Type) from AddressBook;
