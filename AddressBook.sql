@@ -39,3 +39,7 @@ where Firstname='Shivm';
 select* from Addressbook
 where City= 'Delhi' or State='New Delhi';
 
+.....find the size of Addressbook using city and state.....
+
+select count(City) from Addressbook
+select count(State) from Addressbook
