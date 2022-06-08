@@ -61,3 +61,8 @@ update  Addressbook set Type='Profession' where Firstname='Shivm';
 .....count by type......
 
 select Count(Type) from AddressBook;
+
+......add person to both Friend and Family....
+
+Insert into AddressBook Values ('Abhi','Rajput','Modipuram','Bhopal','MP',500012,'abhiraj@hmail.com','900000000','Family');
+Insert into AddressBook Values  ('Shalu','Bishnoi','Ganga Colony','Meerut','UP',500019,'shalubis@gmail.com','7869054687','Friend');
