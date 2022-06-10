@@ -66,3 +66,35 @@ select Count(Type) from AddressBook;
 
 Insert into AddressBook Values ('Abhi','Rajput','Modipuram','Bhopal','MP',500012,'abhiraj@hmail.com','900000000','Family');
 Insert into AddressBook Values  ('Shalu','Bishnoi','Ganga Colony','Meerut','UP',500019,'shalubis@gmail.com','7869054687','Friend');
+
+--------------UC12-Creating entities for ER diagram -------------------
+
+Create table Address_Book1
+(AddressBookId Int Identity(1,1) Primary Key,AddressBookName varchar(100));
+select *from Address_Book1;
+
+
+Create table PersonDetail1
+(   
+    PersonId Int Identity(1,1) Primary Key, AddressBookId Int Foreign Key References Address_Book1(AddressBookId),
+	FirstName varchar(50),
+	LastName varchar(50),
+	Address varchar(100),
+	 City varchar(50),
+	State varchar(50),
+		Zip int,
+   PhoneNumber bigint,
+   Email_ID varchar(50)
+ );
+select *from PersonDetail1;
+
+CREATE table PersonTypes1(	 PersonTypeId Int Identity(1,1) Primary Key,PersonType varchar(50) );
+select *from PersonTypes1;
+
+CREATE table PersonsDetail_Type1(PersonId Int Foreign Key References PersonDetail1(PersonId),
+								PersonTypeId Int Foreign Key References PersonTypes1(PersonTypeId)  );
+select *from PersonsDetail_Type1;
+
+CREATE table Employee_Department1(PersonId Int Foreign Key References PersonDetail1(PersonId),EmployeeID Int  ,DepartmentID int,);
+select *from Employee_Department1;
+				
