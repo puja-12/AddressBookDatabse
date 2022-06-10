@@ -97,4 +97,69 @@ select *from PersonsDetail_Type1;
 
 CREATE table Employee_Department1(PersonId Int Foreign Key References PersonDetail1(PersonId),EmployeeID Int  ,DepartmentID int,);
 select *from Employee_Department1;
-				
+
+
+
+-------------Inserting values into tables---------------------------------
+INSERT INTO Address_Book1 Values('Home'),('School'),('College'),('Office');
+
+select *from Address_Book1;
+
+
+
+Insert INTO PersonDetail1 VALUES(1,'Pooja','Rana','vedpuri','Meerut','UP',520001,1234567890,'puja@gmail.com'),
+								(2,'Rahul','Gupta','XYZ Colony','Laxminagar','Delhi',520002,1234567891,'rahul@gmail.com'),
+								(3,'Viraj','Jhadhav','ABC Colony','Alwar','UP',520003,1234567892,'viraj@gamil.com'),
+								(4,'Shiv','Mishra','','Vijayawada','Andhra Pradeshtra',520007,1234567893,'shiv@gmail.com');
+select *from PersonDetail1;
+
+
+INSERT INTO PersonTypes1 VALUES('Family'),('SchoolFriend'),('Friend'),('Profession');
+
+select *from PersonTypes1;
+
+
+INSERT INTO PersonsDetail_Type1(PersonId,PersonTypeId) VALUES(1,4),(2,3),(3,1),(4,2);
+select *from PersonsDetail_Type1;
+
+INSERT INTO Employee_Department1 VALUES(1,123,818),(2,456,19112),(3,789,4512),(4,244,161815)
+select *from Employee_Department1;
+
+-----------UC13-Ensuring All retrieve queries from UC6 to UC10 with new table---------
+-----------UC6-Retrieve Person belonging to city Or State-------------- -----------
+
+SELECT a.AddressBookId,a.AddressBookName,p.PersonId,p.FirstName,p.LastName,p.Address,p.City,p.State,p.Zip,
+p.PhoneNumber,p.Email_ID,persontype.PersonType,persontype.PersonTypeId FROM 
+PersonDetail1  p
+INNER JOIN Address_Book1 a
+ON a.AddressBookId = p.AddressBookId AND (p.City='Merrut' OR p.State='UP')
+INNER JOIN PersonsDetail_Type1  pt 
+On p.PersonId = pt.PersonId
+INNER JOIN PersonTypes1  persontype 
+ON persontype.PersonTypeId = pt.PersonTypeId;
+
+----------UC7-understand Size of AddressBook by city and state---------
+Select Count(*) As Count,State from PersonDetail1 Group By State;
+Select Count(*) As Count,City from PersonDetail1 Group By City;
+
+select Count(city) from PersonDetail1
+select * from PersonDetail1
+
+----------------UC8-Retrieve entries sorted alphabetically by person name---------------
+SELECT a.AddressBookId,a.AddressBookName,p.PersonId,p.FirstName,p.LastName,p.Address,p.City,p.State,p.Zip,
+p.PhoneNumber,p.Email_Id,pt1.PersonType,pt.PersonTypeId FROM
+Address_Book1 a 
+INNER JOIN PersonDetail1 p ON a.AddressBookId = p.AddressBookId 
+INNER JOIN PersonsDetail_Type1 pt On pt.PersonId = p.PersonId
+INNER JOIN PersonTypes1  pt1 ON pt1.PersonTypeId = pt.PersonTypeId Order By FirstName;
+
+---------------UC_9Retreive Number Of Persons Records Based On Person Types---------------
+Select Count(a.PersonTypeId) As PersonCount,b.PersonType From 
+PersonsDetail_Type1 As a 
+INNER JOIN PersonTypes1 AS b ON b.PersonTypeId = a.PersonTypeId
+INNER JOIN PersonDetail1 AS c ON c.PersonId = a.PersonId Group By a.PersonTypeId,b.PersonType;
+
+---------------UC_10_Retreive Number Of Persons Records Based On AddressBook Names----------
+Select Count(a.AddressBookId) As AddressBookCount,a.AddressBookName From 
+Address_Book1 As a 
+INNER JOIN PersonDetail1 AS pd ON pd.AddressBookId = a.AddressBookId Group By a.AddressBookName,pd.AddressBookId;
